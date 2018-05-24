@@ -16,13 +16,9 @@ public class ConfidenceNode {
 	private ConfidencePairing confidenceLeft;
 	private ConfidencePairing confidenceParent;
 	
-	private ConfidenceHashTable associatedValues;
-	
 	public ConfidenceNode(String value) {
 		cTree = new cTree();
 		cTree.root = this;
 	}
-
-
 
 }
