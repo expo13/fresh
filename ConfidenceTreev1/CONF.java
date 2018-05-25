@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class CONF {
+public class Conf {
 
 	private static File confFile = new File("./*.conf");
 
