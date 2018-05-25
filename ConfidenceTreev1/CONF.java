@@ -1,4 +1,4 @@
-
+package com.expotek.confidencetreev1;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -17,9 +17,9 @@ public class Conf {
 			String line;
 			String fileConf;
 			while ((line = bufferedReader.readLine().trim()) != null) {
-				fileConf = line.subString(0,line.indexOf(":")
-				if (line.matches(fileConf){
-					String value = line.subString(line.indexOf(":"),line.length());
+				fileConf = line.substring(0,line.indexOf(":"));
+				if (line.matches(fileConf)) {
+					String value = line.substring(line.indexOf(":"),line.length());
 					System.out.println("Found conf - " + fileConf + ". Value is - " + value);
 					return value;
 				}
