@@ -1,3 +1,8 @@
+package com.expotek.confidencetreev1;
+
+import java.util.*;
+import java.lang.*;
+import com.expotek.confidencetreev1.ConfidenceLinkedList;
 
 public class ConfidenceHashTable{
 
@@ -10,6 +15,7 @@ public class ConfidenceHashTable{
 	public String hashValue(String value) { 
 		//hashed function
 		String hashedValue;
+		return null;
 	}
 
 	public boolean isPresent(String value) {
@@ -24,7 +30,8 @@ public class ConfidenceHashTable{
 	}
 
 	private boolean searchArrayPosition(String hashedValue, int position) {
-		return linkedList[position].searchHashedValue(unhashHashedValue(hashedValue)) != null;
+		return false;
+		//	return linkedList[position].searchHashedValue(unhashHashedValue(hashedValue)) != null;
 	}
 
 	private String unhashHashedValue(String hashedValue){

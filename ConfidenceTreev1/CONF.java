@@ -9,7 +9,7 @@ public class Conf {
 
 	private static File confFile = new File("./*.conf");
 
-	public String get(String conf) {
+	public static String get(String conf) {
 		try {
 			FileReader fileReader = new FileReader(confFile);
 			BufferedReader bufferedReader = new BufferedReader(fileReader);

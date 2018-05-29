@@ -4,10 +4,10 @@
 if [ $# -eq 0 ]
   then
 	echo "No arguments supplied - Compiling All"
-	javac -d bin/ *.java
+	javac -cp bin/ -d bin/ *.java
 
 else
 	echo "Compiling - $1"
-	javac -d bin/ $1
+	javac -cp bin/ -d bin/ $1
 fi
 

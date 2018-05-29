@@ -1,4 +1,4 @@
-
+package com.expotek.confidencetreev1;
 
 public class ConfidencePairing {
 
@@ -11,16 +11,18 @@ public class ConfidencePairing {
 		count++;
 	}
 
-	public void countDown(){P
+	public void countDown(){
 		count--;
 	}
 
 	public int confidenceUp(){
 		confidence++;
+		return confidence;
 	}
 
 	public int confidenceDown(){
 		confidence--;
+		return confidence;
 	}
 
 	public void setConfidence(int confidence){

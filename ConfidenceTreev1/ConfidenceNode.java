@@ -1,4 +1,6 @@
+package com.expotek.confidencetreev1;
 
+import com.expotek.confidencetreev1.ConfidencePairing;
 
 public class ConfidenceNode {
 
@@ -6,7 +8,7 @@ public class ConfidenceNode {
 	//String value could one day be an object of any type
 	
 	private final String value;
-	private final ConfidenceTree cTree;
+//	private final ConfidenceTree cTree;
 	
 	private ConfidenceNode right;
 	private ConfidenceNode left;
@@ -19,10 +21,8 @@ public class ConfidenceNode {
 	private ConfidenceHashTable associatedValues;
 	
 	public ConfidenceNode(String value) {
-		cTree = new cTree();
-		cTree.root = this;
+//		cTree = new cTree();
+//		cTree.root = this;
+		this.value=value;
 	}
-
-
-
 }
