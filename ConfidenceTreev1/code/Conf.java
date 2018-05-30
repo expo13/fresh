@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class Conf {
 
-	private static File confFile = new File("./*.conf");
+	private static File confFile = new File("ConfidenceTree.conf");//This file config is added at build
 
 	public static String get(String conf) {
 		try {
@@ -16,9 +16,10 @@ public class Conf {
 			StringBuffer stringBuffer = new StringBuffer();
 			String line;
 			String fileConf;
-			while ((line = bufferedReader.readLine().trim()) != null) {
+			while ((line = bufferedReader.readLine()) != null) {
+				line=line.trim();
 				fileConf = line.substring(0,line.indexOf(":"));
-				if (line.matches(fileConf)) {
+				if (fileConf.matches(conf)) {
 					String value = line.substring(line.indexOf(":"),line.length());
 					System.out.println("Found conf - " + fileConf + ". Value is - " + value);
 					return value;
