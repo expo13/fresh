@@ -11,6 +11,7 @@ if [ $# -eq 0 ]
 	echo "No arguments supplied - Compiling All"
 	javac -d bin/ code/*.java
 	jar cfm build/ConfidenceTree.jar META-INF/MANIFEST.MF -C bin/ /com/
+	cp *.conf build/
 else
 	echo "Compiling - $1"
 	javac -cp code/ -d bin/ $1
