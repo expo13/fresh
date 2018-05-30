@@ -9,10 +9,10 @@ mkdir -p build/
 if [ $# -eq 0 ]
   then
 	echo "No arguments supplied - Compiling All"
-	javac -cp bin/ -d bin/ *.java
+	javac -d bin/  code/com/expotek/confidencetreev1/*.java code/com/expotek/utils/*.java
 	jar cfm build/ConfidenceTree.jar META-INF/MANIFEST.MF bin/com/
 else
 	echo "Compiling - $1"
-	javac -cp bin/ -d bin/ $1
+	javac -cp code/ -d bin/ $1
 fi
 
