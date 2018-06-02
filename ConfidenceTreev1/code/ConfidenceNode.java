@@ -7,16 +7,16 @@ import com.expotek.confidencetreev1.ConfidencePairing;
  * TODOS: this class likley doesn't need the confidence pairing parent. Each node should just carry the confidence pairing for its children.
  *
  **/
-public class ConfidenceConfidenceNode {
+public class ConfidenceNode {
 
 	//ArrayList. Binary Tree. LinkedList. HashTable?
 	//String value could one day be an object of any type
 	
 	private final String value;
 
-	private ConfidenceConfidenceNode right;
-	private ConfidenceConfidenceNode left;
-	private ConfidenceConfidenceNode parent;
+	private ConfidenceNode right;
+	private ConfidenceNode left;
+	private ConfidenceNode parent;
 
 	private ConfidencePairing confidenceRight;
 	private ConfidencePairing confidenceLeft;
@@ -24,9 +24,7 @@ public class ConfidenceConfidenceNode {
 	
 	private ConfidenceHashTable associatedValues;
 	
-	public ConfidenceConfidenceNode(String value) {
-		cTree = new cTree();
-		cTree.root = this;
+	public ConfidenceNode(String value) {
 		this.value=value;
 	}
 
@@ -45,7 +43,7 @@ public class ConfidenceConfidenceNode {
 	public void setConfidencePairingLeft(ConfidencePairing left) { 
 		if (confidenceLeft == null) {		
 			this.confidenceLeft = left;
-			this.left.setConfidencePairingParent = left;
+			this.left.setConfidencePairingParent(left);
 			return;
 		}
 		//DO ALGORITHM
@@ -54,19 +52,18 @@ public class ConfidenceConfidenceNode {
 	public void setConfidencePairingRight(ConfidencePairing right) {
 		if (confidenceRight == null){
 			this.confidenceRight = right;
-			this.right.setCondiencePairingParent = right;
+			this.right.setConfidencePairingParent(right);
 		}
 	}
 
-	public void setConfidencePairingParent(ConfidncePairing parent) {
+	public void setConfidencePairingParent(ConfidencePairing parent) {
 		if (confidenceParent == null) {	
 			this.confidenceParent = parent;
 			if (this == this.parent.right){
-				this.parent.setConfidencePairingRight = parent;
+				this.parent.setConfidencePairingRight(parent);
 			}
 			else if (this == this.parent.left){
-				this.parenht.setConfidencePairingLeft = parent;
-			
+				this.parent.setConfidencePairingLeft(parent);			
 			}
 		}
 
