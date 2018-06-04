@@ -79,4 +79,29 @@ public class ConfidenceTreeStorageManager {
 		}	
 		return rootMap;
 	}
+
+	public void saveTreeToDisk(Optional<Node> root) {
+		if (root==null) {
+			System.out.println("Root is null! Ain't nothing to save.");
+			return
+		}
+		File f = Utils.createFile(dataDir + "roots/" + root.value;
+		
+		ConfidenceQueueNode cQN = new ConfidenceQueueNode(root);
+		
+		while (cQN.hasNext()){ //this loop populates and depopulates the queue! SO COOL
+			String printable = cQN.getValue();
+			cQN = cQN.remove();
+			//NOW SAVE STRING TO FILE
+		}
+	}
+
+	public void addToQueueFromBinaryTree(ConfidenceNode parent, ConfidenceQueue cQ) {
+		if (parent.getLeft() != null) {
+			cQ.add(new QueueNode(parent.getLeft().getValue));
+		}
+		if (parent.getRight() != null) {
+			cQ.add(new QueueNode(parent.getRight().getValue));
+		}
+	}
 }
