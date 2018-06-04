@@ -1,5 +1,7 @@
 package com.expotek.confidencetreev1;
 
+import com.expotek.utils.*;
+import java.util.Optional;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Iterator;
@@ -12,7 +14,7 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 import java.io.BufferedReader;
 import java.io.FileReader;
-
+import java.io.File;
 
 public class ConfidenceTreeStorageManager {
 
@@ -80,28 +82,19 @@ public class ConfidenceTreeStorageManager {
 		return rootMap;
 	}
 
-	public void saveTreeToDisk(Optional<Node> root) {
+	public void saveTreeToDisk(Optional<ConfidenceNode> root) {
 		if (root==null) {
 			System.out.println("Root is null! Ain't nothing to save.");
-			return
+			return;
 		}
-		File f = Utils.createFile(dataDir + "roots/" + root.value;
-		
-		ConfidenceQueueNode cQN = new ConfidenceQueueNode(root);
+
+		File f = Utils.createFile(dataDir + "roots/" + root.get().getValue());	
+		ConfidenceQueueNode cQN = new ConfidenceQueueNode(root.get());
 		
 		while (cQN.hasNext()){ //this loop populates and depopulates the queue! SO COOL
 			String printable = cQN.getValue();
 			cQN = cQN.remove();
 			//NOW SAVE STRING TO FILE
-		}
-	}
-
-	public void addToQueueFromBinaryTree(ConfidenceNode parent, ConfidenceQueue cQ) {
-		if (parent.getLeft() != null) {
-			cQ.add(new QueueNode(parent.getLeft().getValue));
-		}
-		if (parent.getRight() != null) {
-			cQ.add(new QueueNode(parent.getRight().getValue));
 		}
 	}
 }

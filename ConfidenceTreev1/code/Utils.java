@@ -2,6 +2,7 @@ package com.expotek.utils;
 
 import java.lang.*;
 import java.io.IOException;
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -30,7 +31,7 @@ public class Utils {
 	/**
 	 * Creates file and parent dirs
 	 **/
-	public File createFile(String fileName){
+	public static File createFile(String fileName){
 		File file = new File(fileName).mkdirs();
 		return file;
 	}

@@ -1,6 +1,6 @@
 package com.expotek.confidencetreev1;
 
-public class SimpleQueue() {
+public class SimpleQueue {
 	
 	private QueueNode head;
 

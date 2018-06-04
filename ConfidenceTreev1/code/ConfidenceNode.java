@@ -68,4 +68,8 @@ public class ConfidenceNode {
 		}
 
 	}
+
+	public String getValue(){
+		return value;
+	}
 }
