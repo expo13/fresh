@@ -1,10 +1,13 @@
 package com.expotek.utils;
 
+import java.nio.file.StandardOpenOption;
 import java.lang.*;
 import java.io.IOException;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 
 /**
  * General method tools for doing shit. 
@@ -32,7 +35,8 @@ public class Utils {
 	 * Creates file and parent dirs
 	 **/
 	public static File createFile(String fileName){
-		File file = new File(fileName).mkdirs();
+		File file = new File(fileName);
+		file.mkdirs();
 		return file;
 	}
 

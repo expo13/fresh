@@ -28,12 +28,16 @@ public class ConfidenceQueueNode {
 			System.out.println("ConfidenceQueueNode: addition node is null. Probably ok.");
 		}
 		if (this.next == null) {
-			next = new ConfidenceQueueNode(node)
+			next = new ConfidenceQueueNode(node);
 		}
 		next.add(node);
 	}
 
 	public boolean hasNext(){
 		return next != null;
+	}
+
+	public String getRootValue(){
+		return root.getValue();
 	}
 }

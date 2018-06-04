@@ -92,7 +92,7 @@ public class ConfidenceTreeStorageManager {
 		ConfidenceQueueNode cQN = new ConfidenceQueueNode(root.get());
 		
 		while (cQN.hasNext()){ //this loop populates and depopulates the queue! SO COOL
-			String printable = cQN.getValue();
+			String printable = cQN.getRootValue();
 			cQN = cQN.remove();
 			//NOW SAVE STRING TO FILE
 		}

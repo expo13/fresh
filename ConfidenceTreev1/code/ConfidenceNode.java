@@ -21,7 +21,7 @@ public class ConfidenceNode {
 	private ConfidencePairing confidenceRight;
 	private ConfidencePairing confidenceLeft;
 	private ConfidencePairing confidenceParent;
-	
+
 	private ConfidenceHashTable associatedValues;
 	
 	public ConfidenceNode(String value) {
@@ -38,6 +38,14 @@ public class ConfidenceNode {
 
 	public void setParentConfidenceNode(ConfidenceNode node) {
 		this.parent=node;
+	}
+
+	public ConfidenceNode getLeft() {
+		return left;
+	}
+
+	public ConfidenceNode getRight() {
+		return right;
 	}
 
 	public void setConfidencePairingLeft(ConfidencePairing left) { 
