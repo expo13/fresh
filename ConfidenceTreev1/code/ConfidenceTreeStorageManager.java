@@ -23,23 +23,30 @@ public class ConfidenceTreeStorageManager {
 
 	public ConfidenceTreeStorageManager(String dataDir) {
 		this.dataDir = dataDir;
-		rootsFile = dataDir + "/roots.data";
+		rootsFile = dataDir + "roots.data";
 	}
 	
-	//TODO check for existing... or ensure that in previous step it does not exist. TRY CATCH??
+	//TODO check for existing... or ensure that in previous step it does not exist. TRY CATCH?? 
+	//TODO ADD to UTILS file
+	//upNote: one day this will work
 	public boolean storeRoot(String value){
+		if (!Utils.makeDirsFromString(dataDir)) {//does dir parent dir exist?
+			return false;
+		}
+		if (!Utils.makeFile(rootsFile, false)) {
+			return false;	
+		}
 		
-		try {
-		Writer writer;
-		writer = new BufferedWriter(new FileWriter(rootsFile, true));  //clears file every time
-		writer.append(value);
-		writer.close();
-		return true;
+		try { 
+			Writer writer;
+			writer = new BufferedWriter(new FileWriter(rootsFile, true));  //clears file every time
+			writer.append(value);
+			writer.close();
+			return true;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return false;
-
 	}
 
 	public boolean treeExists(String s){

@@ -69,4 +69,32 @@ public class Utils {
    		return false;
 	}	 
 	
+	public static boolean makeDirsFromString(String dir) {
+		try {
+			new File(dir).mkdirs();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public static boolean makeFile(String file, boolean overwrite) {
+		try {
+			File f = new File(file);
+		       	if (f.exists()){
+				System.out.println("Utils: File exists - " + file);
+				return true;
+			} else if (overwrite){
+				System.out.println("Utils: Overwriting file - " + file);
+				f.delete();
+				return f.createNewFile();
+			}
+				System.out.println("Utils: Creating file - " + file);
+				return f.createNewFile();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 }
