@@ -17,18 +17,20 @@ import java.io.FileWriter;
  **/
 public class Utils {
 
-	public String getParsedColonValue(String input){
+	//return second value of colon delimited keyvalue pair
+	public static String getParsedColonValue(String input){
 		if (input == null) {
 			return null;
 		}
-		return input.substring(input.indexOf(":"),input.length());
+		return input.split(":")[1];
 	}
 
-	public String getParsedColonKey(String input){	
+	//return key value of colon delimited key value pair
+	public static String getParsedColonKey(String input){	
 		if (input == null) {
 			return null;
 		}
-		return input.substring(0,input.indexOf(":"));
+		return input.split(":")[0];
 	}
 	
 	/**

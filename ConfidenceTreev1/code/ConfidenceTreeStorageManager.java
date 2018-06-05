@@ -30,17 +30,17 @@ public class ConfidenceTreeStorageManager {
 	//TODO ADD to UTILS file
 	//upNote: one day this will work
 	public boolean storeRoot(String value){
+		System.out.println("ConfidenceTreeStorageManager: Storing root - " + value);
 		if (!Utils.makeDirsFromString(dataDir)) {//does dir parent dir exist?
 			return false;
 		}
-		if (!Utils.makeFile(rootsFile, false)) {
+		if (!Utils.makeFile(rootsFile, false)) {//create file if not exists
 			return false;	
 		}
-		
 		try { 
 			Writer writer;
 			writer = new BufferedWriter(new FileWriter(rootsFile, true));  //clears file every time
-			writer.append(value);
+			writer.append(value + "\n\r");
 			writer.close();
 			return true;
 		} catch (IOException e) {

@@ -34,7 +34,7 @@ public class ConfidenceTree {
 		} else if (args[0].toLowerCase().trim().matches("help")) {
 			System.out.println("Need to add help here");
 		} else if (args[0].toLowerCase().trim().matches("cn")) {
-			successfullyFinishedAction = createNewTree(args[0], dataDir);
+			successfullyFinishedAction = createNewTree(args[1], dataDir);
 		} else if (args[0].toLowerCase().trim().matches("uo")) {
 			successfullyFinishedAction = useStoredTree(args, dataDir);
 		}
