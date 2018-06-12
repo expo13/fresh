@@ -1,5 +1,6 @@
 package com.expotek.confidencetreev1;
 
+import com.expotek.utils.Utils;
 import java.util.Scanner;
 import java.util.Iterator;
 import java.util.HashMap;
@@ -37,7 +38,7 @@ public class ConfidenceTree {
 			successfullyFinishedAction = createNewTree(args[1], dataDir);
 		} else if (args[0].toLowerCase().trim().matches("uo")) {
 			successfullyFinishedAction = useStoredTree(args, dataDir);
-		}
+		} else { System.out.println("We didn't really do anything here."); } 
 		System.out.println("Finished action? " + successfullyFinishedAction);
 	}
 
@@ -48,8 +49,8 @@ public class ConfidenceTree {
 	}
 
 	public static boolean useStoredTree(String[] args, String dataDir) {
-		if (args.length < 2) {
-			HashMap<String,String> roots = provideTreeList();
+		if (args.length < 2) {//only "uo" argument supplied
+			HashMap<String,String> roots = provideTreeList(dataDir + "roots.data");
 			System.out.println("Select root by typing it exactly as seen above: ");
 			String selection = scanner.next();
 			if (roots.containsKey(selection)) {
@@ -57,20 +58,19 @@ public class ConfidenceTree {
 			} else {
 				//TRY AGAIN OR ADD NEW
 			}
-			
-		} else {
+		} else { 
 			if (cTSM.treeExists(args[1])) {
 				populateRoot(args[1]);		
-			} else {
+			} else {//no tree exists with that root
 				System.out.println("Tree root does not exist.. try planting one of these");
-				provideTreeList();
+				provideTreeList(dataDir + "roots.data");
 			}
 		}
 		return false;
 	}
 
-	public static HashMap<String,String> provideTreeList() {
-		HashMap<String,String> roots = cTSM.getAllTreeRoots();
+	public static HashMap<String,String> provideTreeList(String file) {
+		HashMap<String,String> roots = Utils.fileListToHashMap(file); 
 		Iterator it = roots.entrySet().iterator();
     		while (it.hasNext()) {
         		Map.Entry pair = (Map.Entry)it.next();

@@ -1,5 +1,9 @@
 package com.expotek.utils;
 
+import java.util.stream.Stream;
+import java.io.BufferedReader;
+import java.util.HashMap;
+import java.util.stream.Collectors;
 import java.nio.file.StandardOpenOption;
 import java.lang.*;
 import java.io.IOException;
@@ -98,5 +102,19 @@ public class Utils {
 			e.printStackTrace();
 			return false;
 		}
+	}
+
+	public static String[] fileListToHashMap(String file){
+		BufferedReader reader = new BufferedReader(new FileReader(file);
+		int lines = 0;
+		while (reader.readLine() != null) lines++;
+		reader.close();	
+		String[] array = new String[lines];
+		try (reader = Files.newBufferedReader(Paths.get(file))) {
+			list = br.lines().collect(Collectors.toList());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return map;
 	}
 }

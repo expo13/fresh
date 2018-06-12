@@ -53,10 +53,6 @@ public class ConfidenceTreeStorageManager {
 		return false;
 	}
 
-	public HashMap<String,String> getAllTreeRoots(){
-		return null;
-	}
-
 	public boolean populateRootInMem(String value){
 	//TODO THIS
 		return false;
