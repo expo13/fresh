@@ -1,11 +1,11 @@
 package com.expotek.confidencetreev1;
 
-import com.expotek.utils.Utils;
-import java.util.Scanner;
-import java.util.Iterator;
 import java.util.HashMap;
-import java.util.*;
-import java.lang.*;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Scanner;
+
+import com.expotek.utils.Utils;
 
 //Beginnings of the confidence algorithm
 //TODO - need to automate creation of data directory.
