@@ -1,19 +1,17 @@
 package com.expotek.utils;
 
+import java.util.stream.Stream;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
+import java.util.HashMap;
+import java.util.stream.Collectors;
+import java.nio.file.StandardOpenOption;
+import java.lang.*;
 import java.io.IOException;
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.util.HashMap;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import java.lang.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 
 /**
  * General method tools for doing shit. 
@@ -106,13 +104,17 @@ public class Utils {
 		}
 	}
 
-	public static List<String> fileListToHashMap(String file) {
-		List<String> list=null;
-		try (BufferedReader reader = Files.newBufferedReader(Paths.get(file))) {
-			list = reader.lines().collect(Collectors.toList());	
+	public static String[] fileListToHashMap(String file){
+		BufferedReader reader = new BufferedReader(new FileReader(file);
+		int lines = 0;
+		while (reader.readLine() != null) lines++;
+		reader.close();	
+		String[] array = new String[lines];
+		try (reader = Files.newBufferedReader(Paths.get(file))) {
+			list = br.lines().collect(Collectors.toList());
 		} catch (IOException e) {
-			e.printStackTrace();	
+			e.printStackTrace();
 		}
-		return list;
+		return map;
 	}
 }

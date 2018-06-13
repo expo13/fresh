@@ -1,9 +1,7 @@
 package com.expotek.confidencetreev1;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -52,10 +50,10 @@ public class ConfidenceTree {
 
 	public static boolean useStoredTree(String[] args, String dataDir) {
 		if (args.length < 2) {//only "uo" argument supplied
-			List<String> roots = provideTreeList(dataDir + "roots.data");
+			HashMap<String,String> roots = provideTreeList(dataDir + "roots.data");
 			System.out.println("Select root by typing it exactly as seen above: ");
 			String selection = scanner.next();
-			if (roots.contains(selection)) {
+			if (roots.containsKey(selection)) {
 				populateRoot(selection);
 			} else {
 				//TRY AGAIN OR ADD NEW
@@ -71,10 +69,13 @@ public class ConfidenceTree {
 		return false;
 	}
 
-	public static List<String> provideTreeList(String file) {
-		List<String> roots = Utils.fileListToHashMap(file); 
-    		for (String s : roots) {
-			System.out.println("Root - " + s);
+	public static HashMap<String,String> provideTreeList(String file) {
+		HashMap<String,String> roots = Utils.fileListToHashMap(file); 
+		Iterator it = roots.entrySet().iterator();
+    		while (it.hasNext()) {
+        		Map.Entry pair = (Map.Entry)it.next();
+        		it.remove(); // avoids a ConcurrentModificationExceptiond
+			System.out.println("Root - " + pair.getKey());
 		}
 		return roots;
 	}
