@@ -109,7 +109,7 @@ public class Utils {
 	public static List<String> fileListToHashMap(String file) {
 		List<String> list=null;
 		try (BufferedReader reader = Files.newBufferedReader(Paths.get(file))) {
-			list = reader.lines().collect(Collectors.toList());	
+			list = reader.lines().filter(s -> !s.isEmpty()).collect(Collectors.toList());	
 		} catch (IOException e) {
 			e.printStackTrace();	
 		}
