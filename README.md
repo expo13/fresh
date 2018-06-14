@@ -5,3 +5,8 @@ hashtable of all linked values. Can replac node value with more appropriate
 value. 
 V2 - Linked List Tree
 V3 - Graph Only System
+
+How do graph nodes that aren't connected know that they are close to each
+other?
+
+Using multithreading with confidence scores to search through nodes.

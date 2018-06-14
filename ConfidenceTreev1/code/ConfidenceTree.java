@@ -116,4 +116,7 @@ public class ConfidenceTree {
 	//
 	//Do both nodes look at each and agree to disconnect or only one node .. this has to do with the one way flow logic
 	//etc.
+
+	//Each stack node when cycling will point contain a pointer to it's parent node! ie... each stack node has a ConfidenceNode pointer
+		//that is set in the stack node constructor
 }

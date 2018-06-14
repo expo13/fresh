@@ -1,20 +1,18 @@
 package com.expotek.confidencetreev1;
 
-public class QueueNode {
+public class QueueNode extends Node {
 
-	private String value;
-	
-	public QueueNode next;
-
-	public String getValue(){
-		return value;
-	}
+	private QueueNode next;
 
 	public QueueNode getNext(){
 		return next;
 	}
 
-	public boolean add(QueueNode node){
-		return false;
+	protected boolean add(QueueNode node){
+		if (next==null) {
+			next = node;
+			return true;
+		}
+		return next.add(node);
 	}
 }
