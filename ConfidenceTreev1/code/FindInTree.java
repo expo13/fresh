@@ -2,6 +2,8 @@ package com.expotek.confidencetreev1;
 
 public class FindInTree {
 
+	private ConfidenceStack confidenceStack;
+
 	//depth first search combined with horizontal search 
 	public String findNode(String value, ConfidenceNode node){
 		
