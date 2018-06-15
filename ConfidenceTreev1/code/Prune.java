@@ -9,6 +9,6 @@ public class Prune {
 	//count value to positions of higher significance // rapid 
 	
 		ConfidenceQueueNode theStart = new ConfidenceQueueNode(root);
-
+		return false;
 	}
 }

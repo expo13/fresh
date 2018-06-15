@@ -7,25 +7,25 @@ public class ConfidencePairing {
 
 	public ConfidencePairing(){}
 
-	public void countUp(){
+	protected void countUp(){
 		count++;
 	}
 
-	public void countDown(){
+	protected void countDown(){
 		count--;
 	}
 
-	public int confidenceUp(){
+	protected int confidenceUp(){
 		confidence++;
 		return confidence;
 	}
 
-	public int confidenceDown(){
+	protected int confidenceDown(){
 		confidence--;
 		return confidence;
 	}
 
-	public void setConfidence(int confidence){
+	protected void setConfidence(int confidence){
 		this.confidence=confidence;
 	}
 

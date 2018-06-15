@@ -28,15 +28,15 @@ public class ConfidenceNode {
 		this.value=value;
 	}
 
-	public void setRightChildConfidenceNode(ConfidenceNode node) {
+	protected void setRightChildConfidenceNode(ConfidenceNode node) {
 		this.right=node;
 	}
 
-	public void setLeftChildConfidenceNode(ConfidenceNode node) {
+	protected void setLeftChildConfidenceNode(ConfidenceNode node) {
 		this.left=node;
 	}
 
-	public void setParentConfidenceNode(ConfidenceNode node) {
+	protected void setParentConfidenceNode(ConfidenceNode node) {
 		this.parent=node;
 	}
 
@@ -48,7 +48,11 @@ public class ConfidenceNode {
 		return right;
 	}
 
-	public void setConfidencePairingLeft(ConfidencePairing left) { 
+	public ConfidenceNode getParent() {
+		return parent;
+	}
+
+	protected void setConfidencePairingLeft(ConfidencePairing left) { 
 		if (confidenceLeft == null) {		
 			this.confidenceLeft = left;
 			this.left.setConfidencePairingParent(left);
@@ -57,14 +61,14 @@ public class ConfidenceNode {
 		//DO ALGORITHM
 	} 
 
-	public void setConfidencePairingRight(ConfidencePairing right) {
+	protected void setConfidencePairingRight(ConfidencePairing right) {
 		if (confidenceRight == null){
 			this.confidenceRight = right;
 			this.right.setConfidencePairingParent(right);
 		}
 	}
 
-	public void setConfidencePairingParent(ConfidencePairing parent) {
+	protected void setConfidencePairingParent(ConfidencePairing parent) {
 		if (confidenceParent == null) {	
 			this.confidenceParent = parent;
 			if (this == this.parent.right){

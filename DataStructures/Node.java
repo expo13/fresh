@@ -10,8 +10,8 @@ public class Node {
 		this.value = Optional.of(value);
 	}
 
-	public Object value(){
-		if (value.ifPresent()){
+	public Object getValue(){
+		if (value.isPresent()){
 			return value.get();
 		}
 		return null;

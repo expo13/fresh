@@ -21,7 +21,7 @@ public class ConfidenceTreeStorageManager {
 	private String dataDir;
 	private String rootsFile;
 
-	public ConfidenceTreeStorageManager(String dataDir) {
+	protected ConfidenceTreeStorageManager(String dataDir) {
 		this.dataDir = dataDir;
 		rootsFile = dataDir + "roots.data";
 	}
@@ -29,7 +29,7 @@ public class ConfidenceTreeStorageManager {
 	//TODO check for existing... or ensure that in previous step it does not exist. TRY CATCH?? 
 	//TODO ADD to UTILS file
 	//upNote: one day this will work
-	public boolean storeRoot(String value){
+	protected boolean storeRoot(String value){
 		System.out.println("ConfidenceTreeStorageManager: Storing root - " + value);
 		if (!Utils.makeDirsFromString(dataDir)) {//does dir parent dir exist?
 			return false;
@@ -49,11 +49,11 @@ public class ConfidenceTreeStorageManager {
 		return false;
 	}
 
-	public boolean treeExists(String s){
+	protected boolean treeExists(String s){
 		return false;
 	}
 
-	public boolean populateRootInMem(String value){
+	protected boolean populateRootInMem(String value){
 	//TODO THIS
 		return false;
 	}
@@ -85,7 +85,7 @@ public class ConfidenceTreeStorageManager {
 		return rootMap;
 	}
 
-	public void saveTreeToDisk(Optional<ConfidenceNode> root) {
+	protected void saveTreeToDisk(Optional<ConfidenceNode> root) {
 		if (root==null) {
 			System.out.println("Root is null! Ain't nothing to save.");
 			return;

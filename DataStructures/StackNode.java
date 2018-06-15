@@ -1,13 +1,17 @@
 package com.expotek.datastructures;
 
+import com.expotek.datastructures.Node;
+
 public class StackNode extends Node {
 
 	private StackNode next;
-
-	public StackNode() {}
+	
+	public StackNode(Object value) {
+		super(value);
+	}
 
 	public StackNode getNext(){
-		return next == null : next ? null;
+		return next == null ? next : null;
 	}
 
 	protected void setNext(StackNode node){

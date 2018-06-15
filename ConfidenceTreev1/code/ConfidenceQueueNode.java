@@ -9,7 +9,7 @@ public class ConfidenceQueueNode {
 		this.root=root;
 	}
 
-	public ConfidenceQueueNode remove(){
+	protected ConfidenceQueueNode remove(){
 		if (root.getLeft()!=null){
 			add(root.getLeft());
 		}
@@ -23,7 +23,7 @@ public class ConfidenceQueueNode {
 		return next;
 	}
 
-	public void add(ConfidenceNode node){
+	protected void add(ConfidenceNode node){
 		if (node==null){
 			System.out.println("ConfidenceQueueNode: addition node is null. Probably ok.");
 		}

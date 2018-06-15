@@ -1,8 +1,10 @@
 package com.expotek.confidencetreev1;
 
+import com.expotek.datastructures.SimpleStack;
+
 public class FindInTree {
 
-	private ConfidenceStack confidenceStack;
+	private SimpleStack simpleStack;
 
 	//depth first search combined with horizontal search 
 	public String findNode(String value, ConfidenceNode node){
@@ -11,25 +13,25 @@ public class FindInTree {
 			//da fuck
 		}
 
-		if (node.right == null) {//we've reached a leaf somewhere
-			node = node.parent;
-			return findNode(value, node.left);
+		if (node.getRight() == null) {//we've reached a leaf somewhere
+			node = node.getParent();
+			return findNode(value, node.getLeft());
 		}
-		if (node.left == null) {
-		
+		if (node.getLeft() == null) {
+	
 		}
 
 		if (searchNodeMap(node) == null) {
-			if (node.right !=null) {
-				return findNode(value,node.right);
+			if (node.getRight() !=null) {
+				return findNode(value,node.getRight());
 			}
 		}
 
-
+		return null;
 	}
 
 	public String searchNodeMap(ConfidenceNode node){
-	
+		return null;	
 	}
 
 }

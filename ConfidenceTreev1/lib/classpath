@@ -1,0 +1,3 @@
+../DataStructures/Node.java ../DataStructures/SimpleStack.java ../DataStructures/StackNode.java
+
+##First line is source files to compile. Second line is classpath.

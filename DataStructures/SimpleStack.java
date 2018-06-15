@@ -6,8 +6,8 @@ public class SimpleStack {
 
 	private StackNode top;
 
-	public Object peek(){
-		return !isEmpty() : top.getValue() ? null;
+	public Object peek() {
+		return !isEmpty() ? top.getValue() : null;
 	}
 
 	protected Object pop(){
@@ -29,6 +29,7 @@ public class SimpleStack {
 
 	public Object search(Object o){
 		//TODO
+		return null;
 	}
 
 	protected StackNode push(StackNode stackNode){
