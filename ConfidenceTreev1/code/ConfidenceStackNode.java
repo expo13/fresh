@@ -12,4 +12,8 @@ public class ConfidenceStackNode extends StackNode {
 		super(null);
 		confidenceNode = node;
 	}
+
+	public ConfidenceNode getConfidenceNode() {
+		return confidenceNode;
+	}
 }
