@@ -5,7 +5,7 @@ public class SimpleQueue {
 	private QueueNode head;
 
 	public Object peek() {
-		return head==null : head.getValue() ? null;
+		return head==null ? head.getValue() : null;
 	}
 
 	protected Object remove(){
