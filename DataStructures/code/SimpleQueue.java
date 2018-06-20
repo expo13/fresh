@@ -1,4 +1,4 @@
-package com.expotek.confidencetreev1;
+package com.expotek.datastructures;
 
 public class SimpleQueue {
 	
