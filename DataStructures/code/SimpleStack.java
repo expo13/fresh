@@ -10,7 +10,7 @@ public class SimpleStack {
 		return !isEmpty() ? top.getValue() : null;
 	}
 
-	Object pop(){
+	public Object pop(){
 		if (!isEmpty()) {
 			if (top.getNext()==null){
 				top = null;
@@ -32,7 +32,7 @@ public class SimpleStack {
 		return null;
 	}
 
-	private	StackNode push(StackNode stackNode){
+	public StackNode push(StackNode stackNode){
 		stackNode.setNext(top);
 		top=stackNode;
 		return stackNode;

@@ -9,13 +9,4 @@ public class ConfidenceStack extends SimpleStack {
 		super();
 	}
 
-	@Override
-	StackNode push(StackNode node) {
-		super.push(node);
-	}
-
-	@Override
-	Object pop() {
-		super.pop();
-	}
 }

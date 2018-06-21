@@ -27,7 +27,7 @@ public class FindInTree {
 			return findNode(value, node.getRight());
 		}
 		if (node.getRight() == null && !confidenceStack.isEmpty()) {//we've reach a leaf
-			ConfidenceStackNode confidenceStackNode = confidenceStack.pop();
+			ConfidenceStackNode confidenceStackNode = (ConfidenceStackNode) confidenceStack.pop();
 			return findNode(value, confidenceStackNode.getConfidenceNode());
 		}	
 		return null;

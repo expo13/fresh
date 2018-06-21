@@ -11,7 +11,7 @@ if [ $# -eq 0 ]
 	echo "No arguments supplied - Compiling All"
 	echo "Compiling code/ and these source files: $(head -n 1 ./lib/classpath)"
 	#javac -cp .lib/ -d bin/ $(head -n 1 ./lib/classpath) code/*.java
-	javac -cp .:lib/*.jar:lib/ -d bin/ code/*.java
+	javac -cp lib/*.jar -d bin/ code/*.java
 	jar cfm build/ConfidenceTree.jar META-INF/MANIFEST.MF -C bin/ /com/
 	cp *.conf build/
 else

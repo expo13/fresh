@@ -54,7 +54,10 @@ public class ConfidenceTreeStorageManager {
 	}
 
 	protected boolean populateRootInMem(String value){
-	//TODO THIS
+		//Set root as root node
+		//Find 
+		//
+		//Need to figure out how we want to rep this in storage.
 		return false;
 	}
 
