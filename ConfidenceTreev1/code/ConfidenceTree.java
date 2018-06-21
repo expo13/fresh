@@ -80,7 +80,7 @@ public class ConfidenceTree {
 	}
 
 	private static void populateRoot(String value) {
-	//	root = cTSM.populateRootInMem(value);
+		root = cTSM.populateRootInMem(value);
 	}
 
 
