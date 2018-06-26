@@ -53,12 +53,42 @@ public class ConfidenceTreeStorageManager {
 		return false;
 	}
 
-	protected boolean populateRootInMem(String value){
+	protected ConfidenceNode populateRootInMem(String value, String rootDir){
 		//Set root as root node
-		//Find 
+		ConfidenceNode root = new ConfidenceNode(value);
+		List<String> nodesList = Utils.fileListToArrayList(rootDir+value); //create map of 'index' to node from stream
+		nodesList.stream().collect(Collectors.toMap(Utils.getParsedColonKey(String), new ConfidenceNode(//lookup value) ));
+		//Find root value in DB and add line by line! 
 		//
 		//Need to figure out how we want to rep this in storage.
 		return false;
+	}
+
+	/**
+	 * Takes the second half of the parsed line - an int value - and maps it to it's value in the db files.
+	 **/
+	protected String value lookupValu(int key) {
+		String dataFile = String.valueOf(key%20);	
+		//basically a linked list in the file now. Possibly streamify this, but for now it's old school.
+		try (BufferedReader br = new BufferedReader(new FileReader(dataFile))) {
+			String line;
+			while ((line = br.readLine()) != null) {
+				if (Utils.parsedColonKey.matches(line)) {
+					return Utils.getParsedColonValue(line);
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		System.out.println("lookupValue: WOMP womp...");
+		return null;
+	}
+
+	protected ConfidenceNode getNextInDBFile() {
+		//get next line then get value from hash
+		int nodeNumber;
+		char direction;
+		String value;
 	}
 
 	//TODO Review this method to ensure it's doing what we want it to do.

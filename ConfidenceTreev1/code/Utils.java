@@ -106,7 +106,7 @@ public class Utils {
 		}
 	}
 
-	public static List<String> fileListToHashMap(String file) {
+	public static List<String> fileListToArrayList(String file) {
 		List<String> list=null;
 		try (BufferedReader reader = Files.newBufferedReader(Paths.get(file))) {
 			list = reader.lines().filter(s -> !s.isEmpty()).collect(Collectors.toList());	
