@@ -56,13 +56,13 @@ public class ConfidenceTree {
 			System.out.println("Select root by typing it exactly as seen above: ");
 			String selection = scanner.next();
 			if (roots.contains(selection)) {
-				populateRoot(selection);
+				populateTreeRoot(selection, dataDir);
 			} else {
 				//TRY AGAIN OR ADD NEW
 			}
 		} else { 
-			if (cTSM.treeExists(args[1])) {
-				populateRoot(args[1]);		
+			if (cTSM.treeExists(args[1])) { //TODO: check this. Make new but using old? not sure we want this.
+				populateTreeRoot(args[1], dataDir);		
 			} else {//no tree exists with that root
 				System.out.println("Tree root does not exist.. try planting one of these");
 				provideTreeList(dataDir + "roots.data");
@@ -72,15 +72,15 @@ public class ConfidenceTree {
 	}
 
 	public static List<String> provideTreeList(String file) {
-		List<String> roots = Utils.fileListToHashMap(file); 
+		List<String> roots = Utils.fileListToArrayList(file); 
     		for (String s : roots) {
 			System.out.println("Root - " + s);
 		}
 		return roots;
 	}
 
-	private static void populateRoot(String value) {
-		root = cTSM.populateRootInMem(value);
+	private static void populateTreeRoot(String value, String dataDir) {
+		root = cTSM.populateRootInMem(value, dataDir);
 	}
 
 

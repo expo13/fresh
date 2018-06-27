@@ -1,20 +1,23 @@
 package com.expotek.confidencetreev1;
 
-import com.expotek.utils.*;
-import java.util.Optional;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Iterator;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.Writer;
 import java.io.IOException;
+import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.File;
+
+import com.expotek.utils.*;
 
 public class ConfidenceTreeStorageManager {
 
@@ -54,26 +57,34 @@ public class ConfidenceTreeStorageManager {
 	}
 
 	protected ConfidenceNode populateRootInMem(String value, String rootDir){
-		//Set root as root node
 		ConfidenceNode root = new ConfidenceNode(value);
 		List<String> nodesList = Utils.fileListToArrayList(rootDir+value); //create map of 'index' to node from stream
-		nodesList.stream().collect(Collectors.toMap(Utils.getParsedColonKey(String), new ConfidenceNode(//lookup value) ));
-		//Find root value in DB and add line by line! 
-		//
-		//Need to figure out how we want to rep this in storage.
-		return false;
+		Map<String, ConfidenceNode> nodeMap = nodesList.stream().collect(Collectors.toMap(string -> Utils.getParsedColonKey(string), string -> new ConfidenceNode(lookupValue(Utils.getParsedColonKey(string)))));
+		for (String s : nodesList) {
+			String key, parent, childNode;
+			key = Utils.getParsedColonKey(s);
+			childNode = Utils.getParsedColonValue(s);
+			if (key.contains("l")) {
+				parent = key.replace("l","");
+				nodeMap.get(parent).setLeftChildConfidenceNode(nodeMap.get(childNode));
+			} else if (key.contains("r")) {
+				parent = key.replace("r","");
+				nodeMap.get(parent).setRightChildConfidenceNode(nodeMap.get(childNode));
+			}
+		}
+		return root;
 	}
 
 	/**
 	 * Takes the second half of the parsed line - an int value - and maps it to it's value in the db files.
 	 **/
-	protected String value lookupValu(int key) {
-		String dataFile = String.valueOf(key%20);	
+	protected String lookupValue(String key) {
+		String dataFile = String.valueOf(Integer.parseInt(key)%20);	
 		//basically a linked list in the file now. Possibly streamify this, but for now it's old school.
 		try (BufferedReader br = new BufferedReader(new FileReader(dataFile))) {
 			String line;
 			while ((line = br.readLine()) != null) {
-				if (Utils.parsedColonKey.matches(line)) {
+				if (Utils.getParsedColonKey(line).matches(key)) {
 					return Utils.getParsedColonValue(line);
 				}
 			}
@@ -89,12 +100,12 @@ public class ConfidenceTreeStorageManager {
 		int nodeNumber;
 		char direction;
 		String value;
+		return null;
 	}
 
 	//TODO Review this method to ensure it's doing what we want it to do.
 	private HashMap<String,String> getRootMap(){
-		HashMap<String,String> rootMap = new HashMap<String,String>();
-		
+		HashMap<String,String> rootMap = new HashMap<String,String>();		
 		//read file into stream, try-with-resources
 		String line;
     		
@@ -126,11 +137,12 @@ public class ConfidenceTreeStorageManager {
 
 		File f = Utils.createFile(dataDir + "roots/" + root.get().getValue());	
 		ConfidenceQueueNode cQN = new ConfidenceQueueNode(root.get());
-		
+		int nodeCount=1;
 		while (cQN.hasNext()){ //this loop populates and depopulates the queue! SO COOL
-			String printable = cQN.getRootValue();
+			String nodeValue = cQN.getRootValue();
 			cQN = cQN.remove();
-			//NOW SAVE STRING TO FILE
+			
+			nodeCount++;
 		}
 	}
 }

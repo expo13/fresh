@@ -2,7 +2,6 @@ package com.expotek.confidencetreev1;
 
 import com.expotek.confidencetreev1.ConfidencePairing;
 /**
- * This class hey!
  *
  * TODOS: this class likley doesn't need the confidence pairing parent. Each node should just carry the confidence pairing for its children.
  *
