@@ -37,17 +37,18 @@ public class ConfidenceTree {
 		} else if (args[0].toLowerCase().trim().matches("help")) {
 			System.out.println("Need to add help here");
 		} else if (args[0].toLowerCase().trim().matches("cn")) {
-			successfullyFinishedAction = createNewTree(args[1], dataDir);
+			successfullyFinishedAction = createNewTree(args, dataDir);
 		} else if (args[0].toLowerCase().trim().matches("uo")) {
 			successfullyFinishedAction = useStoredTree(args, dataDir);
 		} else { System.out.println("We didn't really do anything here."); } 
 		System.out.println("Finished action? " + successfullyFinishedAction);
 	}
 
-	public static boolean createNewTree(String value, String dataDir) {
-		root = new ConfidenceNode(value);
+	public static boolean createNewTree(String[] args, String dataDir) {	
+		if (args.length < 2) { System.out.println("Need another arguments to create new."); return false;}
+		root = new ConfidenceNode(args[1]);
 		//TODO review passing root on next line
-		return cTSM.storeRoot(value);
+		return cTSM.storeRoot(args[1]);
 	}
 
 	public static boolean useStoredTree(String[] args, String dataDir) {
@@ -56,13 +57,13 @@ public class ConfidenceTree {
 			System.out.println("Select root by typing it exactly as seen above: ");
 			String selection = scanner.next();
 			if (roots.contains(selection)) {
-				populateTreeRoot(selection, dataDir);
+				cTSM.populateRootInMem(selection);
 			} else {
 				//TRY AGAIN OR ADD NEW
 			}
 		} else { 
 			if (cTSM.treeExists(args[1])) { //TODO: check this. Make new but using old? not sure we want this.
-				populateTreeRoot(args[1], dataDir);		
+				cTSM.populateRootInMem(args[1]);
 			} else {//no tree exists with that root
 				System.out.println("Tree root does not exist.. try planting one of these");
 				provideTreeList(dataDir + "roots.data");
@@ -79,15 +80,7 @@ public class ConfidenceTree {
 		return roots;
 	}
 
-	private static void populateTreeRoot(String value, String dataDir) {
-		root = cTSM.populateRootInMem(value, dataDir);
-	}
-
-
-
 // TO START A value picks a random starting point?
-// th
-
 //	READ THIS CRAIG
 
 	//Every node has a confidence value with it's connections to each node.

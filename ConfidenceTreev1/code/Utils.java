@@ -32,17 +32,22 @@ public class Utils {
 	}
 
 	//return key value of colon delimited key value pair
-	public static String getParsedColonKey(String input){	
+	public static String getParsedColonKey(String input) {	
 		if (input == null) {
 			return null;
 		}
 		return input.split(":")[0];
 	}
 	
+	public static String hashWithModulus(int modulus, String value) {
+		return null;
+	}
+	
 	/**
-	 * Creates file and parent dirs
+	 * Creates file and parent dirs and overwrites current file.
 	 **/
-	public static File createFile(String fileName){
+	public static File createFile(String fileName) {
+		if (fileName == null || fileName.matches("") { System.out.println("Utils|createFile|fileName is null or empty"); return null; }
 		File file = new File(fileName);
 		file.mkdirs();
 		return file;
@@ -107,6 +112,7 @@ public class Utils {
 	}
 
 	public static List<String> fileListToArrayList(String file) {
+		if (file==null || file.matches("")) { System.out.println("Utils|fileListToArrayList|Received null or empty input"); }
 		List<String> list=null;
 		try (BufferedReader reader = Files.newBufferedReader(Paths.get(file))) {
 			list = reader.lines().filter(s -> !s.isEmpty()).collect(Collectors.toList());	

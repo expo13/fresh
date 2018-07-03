@@ -19,6 +19,10 @@ import java.util.stream.Stream;
 
 import com.expotek.utils.*;
 
+
+/**
+ * This class should only be newed up once per run as it should only be tied to one rootsfile.
+ **/
 public class ConfidenceTreeStorageManager {
 
 	private String dataDir;
@@ -45,20 +49,31 @@ public class ConfidenceTreeStorageManager {
 			writer = new BufferedWriter(new FileWriter(rootsFile, true));  //clears file every time
 			writer.append(value + "\n\r");
 			writer.close();
-			return true;
+			return storeRootMapFile();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return false;
 	}
 
+	//TODO create backups of old tree maps
+	protected boolean storeRootMapFile(ConfidenceNode root) {
+		if (Utils.createFile(dataDir+"/"+root.getValue()+".data")==null) {
+			return false;
+		}
+
+				
+		//store file with root name
+		//then store file with root name map hashed by modulus
+	}
+
 	protected boolean treeExists(String s){
 		return false;
 	}
 
-	protected ConfidenceNode populateRootInMem(String value, String rootDir){
+	protected ConfidenceNode populateRootInMem(String value){
 		ConfidenceNode root = new ConfidenceNode(value);
-		List<String> nodesList = Utils.fileListToArrayList(rootDir+value); //create map of 'index' to node from stream
+		List<String> nodesList = Utils.fileListToArrayList(dataDir+rootsFile+"/"+value); //create map of 'index' to node from stream
 		Map<String, ConfidenceNode> nodeMap = nodesList.stream().collect(Collectors.toMap(string -> Utils.getParsedColonKey(string), string -> new ConfidenceNode(lookupValue(Utils.getParsedColonKey(string)))));
 		for (String s : nodesList) {
 			String key, parent, childNode;
@@ -138,10 +153,16 @@ public class ConfidenceTreeStorageManager {
 		File f = Utils.createFile(dataDir + "roots/" + root.get().getValue());	
 		ConfidenceQueueNode cQN = new ConfidenceQueueNode(root.get());
 		int nodeCount=1;
-		while (cQN.hasNext()){ //this loop populates and depopulates the queue! SO COOL
-			String nodeValue = cQN.getRootValue();
+		while (cQN.hasNext()){ //this loop populates and depopulates the queue! 
+			String nodeValue = cQN.getChildValue();
+			ConfidenceNode confidenceNode = cQN.getChildNode();
+			if (confidenceNode.getLeft()!=null) {
+					 	
+			}
+			if (confidenceNode.getRight()!=null) {
+				
+			}
 			cQN = cQN.remove();
-			
 			nodeCount++;
 		}
 	}

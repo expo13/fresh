@@ -3,18 +3,18 @@ package com.expotek.confidencetreev1;
 public class ConfidenceQueueNode {
 	
 	private ConfidenceQueueNode next;
-	private ConfidenceNode root;
+	private ConfidenceNode childNode;
 
-	public ConfidenceQueueNode(ConfidenceNode root) {
-		this.root=root;
+	public ConfidenceQueueNode(ConfidenceNode childNode) {
+		this.childNode=childNode;
 	}
 
 	protected ConfidenceQueueNode remove(){
-		if (root.getLeft()!=null){
-			add(root.getLeft());
+		if (childNode.getLeft()!=null){
+			add(childNode.getLeft());
 		}
-		if (root.getRight()!=null){
-			add(root.getRight());
+		if (childNode.getRight()!=null){
+			add(childNode.getRight());
 		};
 		return next;
 	}
@@ -37,7 +37,11 @@ public class ConfidenceQueueNode {
 		return next != null;
 	}
 
-	public String getRootValue(){
-		return root.getValue();
+	public String getChildValue(){
+		return childNode.getValue();
+	}
+
+	public ConfidenceNode getChildNode() {
+		return this.childNode;
 	}
 }
